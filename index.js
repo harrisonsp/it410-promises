@@ -26,10 +26,11 @@ exports.readDir = function(dirPath){
 }
 
 exports.readDirFiles = function(dirPath){
+    var retArray = []
     return exports.readDir(dirPath)
         .then( function (somefiles) {
             for( var i; i < somefiles.length; i++){
-                exports.readFile(exports.resolvedPath(dirPath, somefiles[i]))
+                retArray.push[exports.readFile(exports.resolvedPath(dirPath, somefiles[i]))]
             }
         })
 }  
