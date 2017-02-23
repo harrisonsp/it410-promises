@@ -28,12 +28,11 @@ exports.readDir = function(dirPath){
 exports.readDirFiles = function(dirPath){
     exports.readDir(dirPath)
         .then( function (somefiles) {
-            var contentArray = []
             for( var i; i < somefiles.length; i++){
                 exports.readFile(exports.resolvedPath(dirPath, somefiles[i]))
             }
         })
-    
+}  
     // This almost worked
     // var contents = []
     // return new Promise(function(resolve, reject){
@@ -48,4 +47,3 @@ exports.readDirFiles = function(dirPath){
     //         resolve(contents);
     //     });
     // });
-}
