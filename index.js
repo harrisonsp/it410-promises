@@ -26,17 +26,26 @@ exports.readDir = function(dirPath){
 }
 
 exports.readDirFiles = function(dirPath){
-    var contents = []
-    return new Promise(function(resolve, reject){
-        fileSys.readdir(dirPath, (err, files) => {
-            if (err) reject(err);
-            for (var i; i < files.length; i++){
-                fileSys.readFile(filePath, 'utf8', (err, data) => {
-                    if (err) reject(err);
-                    contents.push(data);
-	            });
+    exports.readDir(dirPath)
+        .then( function (somefiles) {
+            var contentArray = []
+            for( var i; i < somefiles.length; i++){
+                exports.readFile(exports.resolvedPath(dirPath, somefiles[i]))
             }
-            resolve(contents);
-        });
-    });
+        })
+    
+    // This almost worked
+    // var contents = []
+    // return new Promise(function(resolve, reject){
+    //     fileSys.readdir(dirPath, (err, files) => {
+    //         if (err) reject(err);
+    //         for (var i; i < files.length; i++){
+    //             fileSys.readFile(filePath, 'utf8', (err, data) => {
+    //                 if (err) reject(err);
+    //                 contents.push(data);
+	//             });
+    //         }
+    //         resolve(contents);
+    //     });
+    // });
 }
