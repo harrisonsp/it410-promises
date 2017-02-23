@@ -30,11 +30,11 @@ exports.readDirFiles = function(dirPath){
     exports.readDir(dirPath)
         .then( function (somefiles) {
             for( var i; i < somefiles.length; i++){
-                exports.readFile(exports.resolvedPath(dirPath, somefiles[i]))
+                retArray.push(exports.readFile(exports.resolvedPath(dirPath, somefiles[i])))
             }
             
         })
-        return Promise.all()
+    return Promise.all(retArray)
 }  
     // This almost worked
     // var contents = []
