@@ -26,9 +26,9 @@ exports.readDir = function(dirPath){
 }
 
 exports.readDirFiles = function(dirPath){
-    var retArray = []
     exports.readDir(dirPath)
         .then( function (somefiles) {
+           var retArray = []
             for( var i; i < somefiles.length; i++){
                 retArray.push(exports.readFile(exports.resolvedPath(dirPath, somefiles[i])))
             }
