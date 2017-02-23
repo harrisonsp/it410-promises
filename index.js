@@ -30,10 +30,10 @@ exports.readDirFiles = function(dirPath){
         .then( function (somefiles) {
            var retArray = []
             for( var i; i < somefiles.length; i++){
-                retArray.push(exports.readFile(exports.resolvedPath(dirPath, somefiles[i])))
+                retArray.push(exports.readFile(exports.resolvedPath(dirPath, somefiles[i])));
             }
-            return Promise.all(retArray)
-        })
+            return Promise.all(retArray);
+        });
     
 }  
     // This almost worked
